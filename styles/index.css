@@ -1,0 +1,191 @@
+        body {
+            background: linear-gradient(315deg, #ff9a9e 0%, #dac9d4 50%, #eeebed 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            padding: 20px 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-left: 30px;
+        }
+
+        .container-fluid{
+            background-color: white;
+            
+        }
+
+        .main-container {
+            height: 100vh;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .spa-image-section {
+            flex: 1;
+            background-image: url('/img/img_aamaalspa.jfif');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .login-section {
+            flex: 1;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-title {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .img-fluid{
+            width: 20rem; 
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+            border-radius: 20%;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-end;
+            
+        }
+
+        .logo {
+            width: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 14px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-control:focus {
+            border-color: #ff9a9e;
+            box-shadow: 0 0 0 0.2rem rgba(255, 154, 158, 0.25);
+            outline: none;
+        }
+
+        
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .forgot-link {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .forgot-link:hover {
+            color: #ff9a9e;
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #0f0f0f 0%, #5a5856 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            padding: 12px 20px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 35, 33, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .spa-image-section {
+                height: 40vh;
+            }
+            
+            .login-section {
+                height: 60vh;
+                padding: 20px;
+            }
+            
+            .navbar-brand {
+                margin-left: 15px;
+                font-size: 1.5rem;
+            }
+        }
+
+    .container-fluid{
+        background-color: white;
+        position: absolute;
+        display: flex;
+}
