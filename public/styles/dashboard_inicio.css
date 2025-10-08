@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +6,9 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
     min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
 
 .sidebar {
@@ -76,6 +77,22 @@ body {
 
 .sidebar-link i {
     font-size: 1.2rem;
+}
+
+.sidebar-link{
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.5s , color 0.7s;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.sidebar-link:hover{
+    background-color: rgb(34, 16, 16);
+    color:white;
 }
 
 .logout-btn {

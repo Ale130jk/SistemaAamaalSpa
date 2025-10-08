@@ -9,7 +9,89 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     </head>
 <body>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Inventario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="/public/styles/dashboard_inventario.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside>
+      <div class="sidebar-header">
+        <h2>Aamaal Spa's</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#"><span class="material-icons-sharp">home</span> Inicio</a>
+        <a href="#"><span class="material-icons-sharp">inventory_2</span> Inventario</a>
+        <a href="#" class="active"><span class="material-icons-sharp">assessment</span> Reportes</a>
+        <a href="#"><span class="material-icons-sharp">people</span> Clientes</a>
+        <a href="#"><span class="material-icons-sharp">receipt_long</span> Registro de compras</a>
+        <a href="#"><span class="material-icons-sharp">spa</span> Servicios</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#"><span class="material-icons-sharp">logout</span> Salir</a>
+      </div>
+    </aside>
+
+    <!-- 🔍 Formulario de búsqueda -->
+    <form action="Proceso_Busqueda" method="post" class="p-3"> 
+      <input type="search" name="q" placeholder="Buscar..." required>
+      <button type="submit" class="btn btn-primary btn-sm">Buscar</button>  
+      <button type="button" class="btn btn-success btn-sm">+ Agregar categoría</button>
+      <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+    </form>
+
+    <!-- 📊 Tabla -->
+    <div class="p-3">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Código producto</th>
+            <th>Marca</th>
+            <th>Tipo de producto</th>
+            <th>Cantidad</th>
+            <th>Precio Mayorista</th>
+            <th>Precio Venta</th>
+            <th>Categoría</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Marca A</td>
+            <td>Shampoo</td>
+            <td>20</td>
+            <td>15.00</td>
+            <td>25.00</td>
+            <td>Cuidado Capilar</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Marca B</td>
+            <td>Mascarilla</td>
+            <td>10</td>
+            <td>20.00</td>
+            <td>35.00</td>
+            <td>Tratamientos</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Marca C</td>
+            <td>Aceite</td>
+            <td>15</td>
+            <td>18.00</td>
+            <td>30.00</td>
+            <td>Natural</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
 </body>
 </html>
