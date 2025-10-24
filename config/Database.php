@@ -62,3 +62,5 @@ class Database{
         throw new Exception("No se puede deserializar una instancia de Database.");
     }
 }
+
+?>
