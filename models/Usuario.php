@@ -7,7 +7,6 @@ class Usuario{
     {
         $this->db = Database::getInstance()->getConnection();
     }
-    /*Crea un nuevo usuario con contraseña encriptada.*/
     public function crear(string $username, string $nombre_completo, string $password, string $rol): bool
     {
         try {
@@ -27,7 +26,7 @@ class Usuario{
             return false;
         }
     }
-    /*Actualiza datos de un usuario.*/
+    /*Actualiza datos de un usuario*/
     public function actualizar(int $id, string $nombre_completo, string $rol, string $estado): bool
     {
         try {
@@ -45,7 +44,7 @@ class Usuario{
             return false;
         }
     }
-    /*Obtiene todos los usuarios activos.*/
+    /*Obtiene todos los usuarios activos*/
     public function listar(): array
     {
         $stmt = $this->db->query("SELECT id, username, nombre_completo, rol, estado FROM usuarios WHERE estado='activo'");
@@ -59,7 +58,7 @@ class Usuario{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user ?: null;
     }
-    /*Elimina lógicamente (desactiva) un usuario.*/
+    /*Elimina lógicamente (desactiva) un usuario*/
     public function desactivar(int $id): bool
     {
         try {

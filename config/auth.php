@@ -1,11 +1,5 @@
 <?php
-/**
- * auth.php
- * Manejo de sesiones, autenticación, roles y seguridad (CSRF).
-*/
-// Iniciar la sesión solo si no hay una activa
 if (session_status() === PHP_SESSION_NONE) {    
-    // Configuración segura de cookies de sesión
 $secure = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off')
     || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https');
 session_set_cookie_params([
@@ -18,53 +12,6 @@ session_set_cookie_params([
 ]);
     session_start();
 }
-// --- 2. Funciones de Seguridad (CSRF) ---
-/**
- * Genera y almacena un token CSRF (Cross-Site Request Forgery) en la sesión.
- *
- * @return string El token generado.
- */
-function generate_csrf_token(): string 
-{
-    // Si no existe un token, crea uno nuevo.
-    // Si ya existe, reutiliza el mismo para toda la sesión.
-    if (empty($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-    return $_SESSION['csrf_token'];
-}
-
-/**
- * Valida un token CSRF (recibido por POST o GET).
- *
- * @param string $token El token enviado desde el formulario/AJAX.
- * @return bool True si es válido, false si no.
- */
-function validate_csrf_token(?string $token): bool 
-{
-    if (empty($_SESSION['csrf_token'])) {
-        return false;
-    }
-
-    if ($token === null) {
-        return false;
-    }
-
-    return hash_equals($_SESSION['csrf_token'], (string) $token);
-}
-
-/**
- * Helper: Imprime el campo input hidden para CSRF.
- * Úsalo dentro de tus formularios HTML.
- */
-function csrf_input(): void 
-{
-    echo '<input type="hidden" name="csrf_token" value="' . htmlspecialchars(generate_csrf_token(), ENT_QUOTES, 'UTF-8') . '">';
-}
-/*
- * Middleware verifica si el usuario ha iniciado sesión
- * Si no,detiene la ejecución y redirige o devuelve un JSON 401.
- */
 function require_login(): void 
 {
     if (!isset($_SESSION['user_id'])) {
@@ -81,11 +28,6 @@ function require_login(): void
         exit;
     }
 }
-/**
- *Verifica si el usuario tiene un rol específico (ej: 'admin').
- *
- * @param string $required_role El rol requerido ('admin', 'empleado').
- */
 function require_role(string $required_role): void 
 {
     require_login();
@@ -98,12 +40,10 @@ function require_role(string $required_role): void
             header('Location: index.php?page=inicio&error=permission_denied');
         }
         
-        exit; // Detener la ejecución del script
+        exit;
     }
 }
-/**
- * Obtiene el ID del usuario actual de la sesión.
- */
+
 function get_current_user_id(): ?int {
     if (!isset($_SESSION['user_id'])) {
     return null;

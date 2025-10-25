@@ -27,7 +27,6 @@ class Cliente{
             return false;
         }
     }
-    /*Actualiza datos del cliente*/
     public function actualizar(int $id, string $nombre, string $telefono, string $correo, string $direccion): bool
     {
         try {
@@ -46,7 +45,6 @@ class Cliente{
             return false;
         }
     }
-    /*Listar todos los clientes.*/
     public function listar(): array
     {
         $stmt = $this->db->query("SELECT * FROM clientes ORDER BY nombre ASC");
@@ -61,8 +59,6 @@ class Cliente{
         $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
         return $cliente ?: null;
     }
-
-    /*Eliminar cliente (opcional: lógica o física según reglas).*/
     public function eliminar(int $id): bool
     {
         try {
