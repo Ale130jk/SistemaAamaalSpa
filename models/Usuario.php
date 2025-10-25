@@ -1,27 +1,13 @@
 <?php
-/**
- * Usuario.php
- * Modelo para la gestión de usuarios del sistema.
- * Incluye operaciones CRUD seguras y auditoría básica.
- *
- * @package spa_mype\models
- */
-
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../config/auth.php';
-
-class Usuario
-{
+class Usuario{
     private PDO $db;
-
     public function __construct()
     {
         $this->db = Database::getInstance()->getConnection();
     }
-
-    /**
-     * Crea un nuevo usuario con contraseña encriptada.
-     */
+    /*Crea un nuevo usuario con contraseña encriptada.*/
     public function crear(string $username, string $nombre_completo, string $password, string $rol): bool
     {
         try {
@@ -41,10 +27,7 @@ class Usuario
             return false;
         }
     }
-
-    /**
-     * Actualiza datos de un usuario.
-     */
+    /*Actualiza datos de un usuario.*/
     public function actualizar(int $id, string $nombre_completo, string $rol, string $estado): bool
     {
         try {
@@ -62,19 +45,13 @@ class Usuario
             return false;
         }
     }
-
-    /**
-     * Obtiene todos los usuarios activos.
-     */
+    /*Obtiene todos los usuarios activos.*/
     public function listar(): array
     {
         $stmt = $this->db->query("SELECT id, username, nombre_completo, rol, estado FROM usuarios WHERE estado='activo'");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    /**
-     * Busca usuario por ID.
-     */
+    /*Busca usuario por ID.*/
     public function obtenerPorId(int $id): ?array
     {
         $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE id = :id LIMIT 1");
@@ -82,10 +59,7 @@ class Usuario
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user ?: null;
     }
-
-    /**
-     * Elimina lógicamente (desactiva) un usuario.
-     */
+    /*Elimina lógicamente (desactiva) un usuario.*/
     public function desactivar(int $id): bool
     {
         try {

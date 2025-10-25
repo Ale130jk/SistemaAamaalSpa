@@ -1,26 +1,13 @@
 <?php
-/**
- * Cliente.php
- * Modelo para la gestión de clientes (personas que reservan servicios).
- *
- * @package spa_mype\models
- */
-
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../config/auth.php';
-
-class Cliente
-{
+class Cliente{
     private PDO $db;
-
     public function __construct()
     {
         $this->db = Database::getInstance()->getConnection();
     }
-
-    /**
-     * Crea un nuevo cliente.
-     */
+    /*Crea un nuevo cliente*/
     public function crear(string $nombre, string $telefono, string $correo, string $direccion): bool
     {
         try {
@@ -40,10 +27,7 @@ class Cliente
             return false;
         }
     }
-
-    /**
-     * Actualiza datos del cliente.
-     */
+    /*Actualiza datos del cliente*/
     public function actualizar(int $id, string $nombre, string $telefono, string $correo, string $direccion): bool
     {
         try {
@@ -62,19 +46,14 @@ class Cliente
             return false;
         }
     }
-
-    /**
-     * Listar todos los clientes.
-     */
+    /*Listar todos los clientes.*/
     public function listar(): array
     {
         $stmt = $this->db->query("SELECT * FROM clientes ORDER BY nombre ASC");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Buscar cliente por ID.
-     */
+    /*Buscar cliente por ID.*/
     public function obtenerPorId(int $id): ?array
     {
         $stmt = $this->db->prepare("SELECT * FROM clientes WHERE id=:id LIMIT 1");
@@ -83,9 +62,7 @@ class Cliente
         return $cliente ?: null;
     }
 
-    /**
-     * Eliminar cliente (opcional: lógica o física según reglas).
-     */
+    /*Eliminar cliente (opcional: lógica o física según reglas).*/
     public function eliminar(int $id): bool
     {
         try {
